@@ -951,3 +951,12 @@ a.crow:hover .crow__a{transform:translate(4px,-4px);color:var(--accent)}
   .hero{padding-top:132px}
   .brand__text em{display:none}
 }
+
+/* 减动效：钉住被关闭时，走廊改为可横滑 */
+@media (prefers-reduced-motion: reduce){
+  .pin__sticky{position:static;height:auto}
+  .pin{height:auto}
+  .pin__track{width:auto;overflow-x:auto;display:flex;gap:20px;padding-bottom:8px}
+  .pin__track::-webkit-scrollbar{height:4px}
+  .pin__track::-webkit-scrollbar-thumb{background:rgba(243,238,229,.2)}
+}
