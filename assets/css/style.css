@@ -121,10 +121,12 @@ body.has-cursor,body.has-cursor a,body.has-cursor button{cursor:none}
 .brand{display:inline-flex;align-items:center;gap:12px}
 .brand__mark{
   width:32px;height:32px;flex:0 0 32px;border:1px solid var(--line);
-  display:grid;place-items:center;font-size:16px;line-height:1;
-  transition:background .4s,color .4s,border-color .4s;
+  display:grid;place-items:center;line-height:1;
+  transition:background .4s,border-color .4s,transform .4s var(--ease);
 }
-.brand:hover .brand__mark{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.brand__mark img{width:26px;height:26px;display:block}
+.brand:hover .brand__mark{border-color:rgba(243,238,229,.35)}
+.brand:hover .brand__mark{transform:translateY(-1px)}
 .brand__text{font-size:15px;font-weight:600;letter-spacing:.06em;line-height:1.1}
 .brand__text em{
   display:block;font-family:var(--mono);font-style:normal;font-size:8.5px;
