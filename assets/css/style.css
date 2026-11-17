@@ -960,3 +960,23 @@ a.crow:hover .crow__a{transform:translate(4px,-4px);color:var(--accent)}
   .pin__track::-webkit-scrollbar{height:4px}
   .pin__track::-webkit-scrollbar-thumb{background:rgba(243,238,229,.2)}
 }
+
+/* =========================================================
+   无限画布（小介绍）
+   ========================================================= */
+.canvaspro{border-top:1px solid var(--line-soft)}
+.canvaspro__grid{
+  display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(32px,5vw,90px);
+  align-items:start;margin-top:clamp(28px,4vw,52px);
+}
+.canvaspro__lead{margin:0;max-width:560px;font-size:clamp(14px,1.15vw,17px);line-height:2;color:var(--muted)}
+.canvaspro__lead b{color:var(--ink);font-weight:700}
+.canvaspro__list{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.canvaspro__list li{
+  display:grid;grid-template-columns:34px 1fr;align-items:baseline;gap:12px;
+  padding:15px 0;border-bottom:1px solid var(--line);font-size:13.5px;line-height:1.7;color:var(--ink);
+}
+.canvaspro__list span{font-family:var(--label);font-size:10px;letter-spacing:.12em;color:var(--accent)}
+.canvaspro__cta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
+.canvaspro__note{font-family:var(--caption);font-size:11px;letter-spacing:.1em;color:rgba(243,238,229,.5)}
+@media (max-width:900px){ .canvaspro__grid{grid-template-columns:1fr;gap:28px} }
