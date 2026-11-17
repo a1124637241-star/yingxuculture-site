@@ -980,3 +980,75 @@ a.crow:hover .crow__a{transform:translate(4px,-4px);color:var(--accent)}
 .canvaspro__cta{display:flex;align-items:center;gap:20px;flex-wrap:wrap;margin-top:clamp(32px,4vw,52px)}
 .canvaspro__note{font-family:var(--caption);font-size:11px;letter-spacing:.1em;color:rgba(243,238,229,.5)}
 @media (max-width:900px){ .canvaspro__grid{grid-template-columns:1fr;gap:28px} }
+
+/* 无限画布 · 操控演示动画 */
+.cvdemo{margin-top:clamp(28px,4vw,52px)}
+.cvdemo__frame{
+  position:relative;overflow:hidden;aspect-ratio:1000/560;
+  border:1px solid var(--line);background:#0a0a0c;
+}
+.cvdemo__frame::before{
+  content:"";position:absolute;inset:-20%;
+  background-image:radial-gradient(rgba(243,238,229,.13) 1px, transparent 1px);
+  background-size:26px 26px;
+  animation:cvdemo-pan 18s linear infinite alternate;
+}
+@keyframes cvdemo-pan{ from{transform:translate3d(0,0,0)} to{transform:translate3d(-26px,-13px,0)} }
+
+.cvdemo__world{
+  position:absolute;inset:0;
+  animation:cvdemo-cam 16s var(--ease) infinite alternate;
+  transform-origin:52% 42%;
+}
+@keyframes cvdemo-cam{
+  0%{transform:scale(1.1) translate(1.4%,1%)}
+  45%{transform:scale(1.02) translate(-.6%,-.4%)}
+  100%{transform:scale(1.12) translate(-2%,-1.4%)}
+}
+
+.cvdemo__wires{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.cvdemo__wires path{
+  fill:none;stroke:rgba(255,59,31,.42);stroke-width:1.4px;
+  stroke-dasharray:5 5;
+  animation:cvdemo-flow 1.6s linear infinite;
+}
+@keyframes cvdemo-flow{ to{stroke-dashoffset:-10} }
+
+.cvd{
+  position:absolute;transform:translate(-50%,-50%);
+  min-width:104px;padding:10px 13px;
+  background:rgba(18,18,21,.92);
+  border:1px solid rgba(243,238,229,.16);
+  font-family:var(--caption);font-size:11px;line-height:1.5;color:rgba(243,238,229,.72);
+  white-space:nowrap;
+  opacity:0;animation:cvdemo-in 16s var(--ease) infinite;
+  animation-delay:var(--d,0s);
+}
+.cvd__k{
+  display:block;font-family:var(--label);font-size:8.5px;letter-spacing:.16em;
+  color:var(--accent);margin-bottom:2px;
+}
+@keyframes cvdemo-in{
+  0%,6%{opacity:0;transform:translate(-50%,-42%)}
+  12%,72%{opacity:1;transform:translate(-50%,-50%)}
+  84%,100%{opacity:.25;transform:translate(-50%,-50%)}
+}
+
+.cvd__thumb{
+  position:absolute;width:6%;aspect-ratio:9/16;transform:translate(-50%,-50%);
+  background:linear-gradient(160deg,rgba(255,59,31,.30),rgba(243,238,229,.05));
+  border:1px solid rgba(243,238,229,.18);
+  opacity:0;animation:cvdemo-in 16s var(--ease) infinite;animation-delay:var(--d,0s);
+}
+.cvdemo__hud{
+  position:absolute;left:14px;bottom:12px;display:flex;align-items:center;gap:8px;
+  font-family:var(--caption);font-size:10px;letter-spacing:.12em;color:rgba(243,238,229,.5);
+}
+.cvdemo__dot{width:5px;height:5px;border-radius:50%;background:var(--accent);animation:cvdemo-blink 2s ease-in-out infinite}
+@keyframes cvdemo-blink{ 50%{opacity:.25} }
+
+@media (prefers-reduced-motion: reduce){
+  .cvdemo__frame::before,.cvdemo__world,.cvd,.cvd__thumb,.cvdemo__wires path,.cvdemo__dot{animation:none}
+  .cvd,.cvd__thumb{opacity:1}
+}
+.cvd__thumb{width:5.4%!important}
