@@ -271,7 +271,7 @@
     track.style.transform = `translate3d(${(-p * pinDistance).toFixed(2)}px, 0, 0)`;
     if (pinBar) pinBar.style.width = `${(p * 100).toFixed(1)}%`;
     if (pinIdx) {
-      const total = track.querySelectorAll('.card').length || 1;
+      const total = track.querySelectorAll('.card[data-video], .card[data-href]').length || 1;
       const n = Math.min(total, Math.round(p * (total - 1)) + 1);
       pinIdx.textContent = String(n).padStart(2, '0');
     }
